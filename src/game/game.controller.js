@@ -10,6 +10,8 @@
 
     var vm = this;
 
+    localStorage.setItem("game",$stateParams.seed);
+
     vm.game = {
       _config: {
         seed: $stateParams.seed,

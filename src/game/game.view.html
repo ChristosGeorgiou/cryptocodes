@@ -1,6 +1,9 @@
-<div class="row row-topbar">
-	<button class="u-pull-right" ng-click="vm.ToggleAll()">εμφανιση / αποκρυψη</button>
+<div class="header">
 	<h1>CryptoCodes <small class="serial">GAME#{{vm.game._config.seed}}</small></h1>
+</div>
+<div class="toolbar">
+	<a ui-sref="app.main" class="button">πισω</a>
+	<button class="u-pull-right" ng-click="vm.ToggleAll()">εμφανιση / αποκρυψη ολων</button>
 </div>
 <div class="cards-wrapper">
 	<div ng-repeat="card in vm.game.cards track by $index" class="card-container" ng-class="{flip:card.flip}" ng-click="vm.ShowCard($index)">

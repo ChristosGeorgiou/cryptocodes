@@ -17,9 +17,11 @@
             controllerAs: 'vm',
         });
 
-        $stateProvider.state("app.home", {
+        $stateProvider.state("app.main", {
             url: "/",
-            templateUrl: 'src/home/home.view.html',
+            templateUrl: 'src/main/main.view.html',
+            controllerAs: 'vm',
+            controller: 'MainController',
         });
 
         $stateProvider.state("app.help", {
@@ -30,7 +32,7 @@
         $stateProvider.state("app.game", {
             url: "/game/:seed",
             params: {
-                seed: Math.floor(Math.random() * Math.pow(10,4)).toString(),
+                seed: null,
             },
             templateUrl: 'src/game/game.view.html',
             controller: 'GameController',
