@@ -12,7 +12,7 @@
 
         $stateProvider.state("app", {
             abstract: true,
-            template: '<ui-view/>',
+            templateUrl: 'src/_common/views/layout.html',
             controller: 'AppController',
             controllerAs: 'vm',
         });
