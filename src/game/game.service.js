@@ -48,8 +48,8 @@
                 YELLOW: "card-yellow",
             };
             var _answers = {
-                BLUE: "ΜΠΛΕ",
-                RED: "ΚΟΚΚΙΝΗ",
+                BLUE: "ΜΠΛΕ ΟΜΑΔΑ",
+                RED: "ΚΟΚΚΙΝΗ ΟΜΑΔΑ",
                 BLACK: "ΔΟΛΟΦΟΝΟΣ",
                 YELLOW: "ΑΘΩΟΣ",
             };
