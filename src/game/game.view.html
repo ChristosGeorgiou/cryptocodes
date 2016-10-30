@@ -1,13 +1,16 @@
 <div class="row row-topbar">
 	<button class="u-pull-right" ng-click="vm.ToggleAll()">εμφανιση / αποκρυψη</button>
-	<h1>CryptoCodes</h1>
+	<h1>CryptoCodes <small class="serial">GAME#{{vm.game._config.seed}}</small></h1>
 </div>
-
-<div class="card-wrapper" ng-repeat="card in vm.cards track by $index">
-	<div class="card" ng-click="vm.ShowCard($index)">
-		<div class="card-inner" ng-class="card.class" >
-			<span class="word">{{card.word}}</span>
-			<span class="expl" ng-show="card.is_shown">{{vm.CardTypes[card.type]}}</span>
+<div class="cards-wrapper">
+	<div ng-repeat="card in vm.game.cards track by $index" class="card-container" ng-class="{flip:card.flip}" ng-click="vm.ShowCard($index)">
+		<div class="card {{card.class}}">
+			<div class="front">
+				<span>{{card.word}}</span>
+			</div>
+			<div class="back">
+				<span>{{card.answer}}</span>
+			</div>
 		</div>
 	</div>
 </div>

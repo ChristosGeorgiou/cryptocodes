@@ -20,6 +20,7 @@ gulp.task('default', ['sass', 'scripts', 'browser-sync'], function () {
 // Static server
 gulp.task('browser-sync', function () {
     browserSync.init({
+        ui: false,
         server: {
             baseDir: "./",
             middleware: [
@@ -46,7 +47,7 @@ gulp.task('sass', function () {
 
 });
 
-gulp.task('scripts', [], function () {
+gulp.task('scripts', ['libs'], function () {
 
     return gulp.src("./src/**/*.js")
         .pipe(angularFilesort())
@@ -65,3 +66,11 @@ gulp.task('scripts', [], function () {
 
 });
 
+gulp.task('libs', function () {
+
+    gulp.src("./node_modules/angular/angular.min.js")
+        .pipe(gulp.dest("./assets/scripts/angular"));
+    gulp.src("./node_modules/angular-ui-router/release/angular-ui-router.min.js")
+        .pipe(gulp.dest("./assets/scripts/angular-ui-router"));
+
+});

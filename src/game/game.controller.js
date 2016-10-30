@@ -6,97 +6,40 @@
     .controller("GameController", GameController);
 
   /* @ngInject */
-  function GameController(WordsData, $stateParams) {
+  function GameController($timeout, WordsData, $stateParams, RandomService, GameService) {
 
     var vm = this;
-    var seed = $stateParams.seed;
 
-    vm.CardTypes = {
-      BLU: "ΜΠΛΕ ΟΜΑΔΑ",
-      RED: "ΚΟΚΚΙΝΗ ΟΜΑΔΑ",
-      BRN: "ΔΟΛΟΦΟΝΟΣ",
-      NEU: "ΑΘΩΟΣ",
+    vm.game = {
+      _config: {
+        seed: $stateParams.seed,
+        amount: 25,
+        cards: {
+          blue: 9,
+          red: 8,
+          black: 1,
+          yellow: 7,
+        }
+      },
+      cards: [],
     };
 
-    vm.CardClasses = {
-      BLU: "card-blue",
-      RED: "card-red",
-      BRN: "card-burn",
-      NEU: "card-neutral",
-    };
+    vm.game.cards = GameService.Init(vm.game._config);
 
     vm.ShowCard = function (index) {
-      vm.cards[index].is_shown = !vm.cards[index].is_shown;
-
-      if (vm.cards[index].is_shown) {
-        vm.cards[index].class = vm.CardClasses[vm.cards[index].type];
-      }
-      else {
-        vm.cards[index].class = null;
-      }
+      vm.game.cards[index].flip = !vm.game.cards[index].flip;
     };
 
+    vm._t=false;
     vm.ToggleAll = function () {
-      vm.cards.forEach(function (c) {
-        c.is_shown = true;
-        c.class = vm.CardClasses[c.type];
+      vm.game.cards.forEach(function (c) {
+        c.flip = !vm._t;
       });
+
+      vm._t = !vm._t;
     };
-
-    function random() {
-      var x = Math.sin(seed++);
-      return x - Math.floor(x);
-    }
-
-    function shuffle(a) {
-      var j, x, i;
-      for (i = a.length; i; i--) {
-        j = Math.floor(random() * i);
-        x = a[i - 1];
-        a[i - 1] = a[j];
-        a[j] = x;
-      }
-      return a;
-    }
-
-    shuffle(WordsData);
-
-    var _words = WordsData.splice(0, 25);
-
-    var _data = [];
-    for (var i = 0; i < 9; i++) {
-      _data.push({
-        word: _words[i],
-        type: "BLU",
-        is_shown: false,
-      });
-    }
-
-    for (var j = 0; j < 8; j++) {
-      _data.push({
-        word: _words[9 + j],
-        type: "RED",
-        is_shown: false,
-      });
-    }
-
-    for (var k = 0; k < 7; k++) {
-      _data.push({
-        word: _words[18 + k],
-        type: "NEU",
-        is_shown: false,
-      });
-    }
-
-    _data.push({
-      word: _words[24],
-      type: "BRN",
-      is_shown: false,
-    });
-
-
-    vm.cards = shuffle(_data);
 
   }
+
 
 } ());

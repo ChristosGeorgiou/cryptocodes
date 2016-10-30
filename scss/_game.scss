@@ -1,0 +1,128 @@
+$card-bg-default:#EEE;
+$card-font-default:#333;
+$card-bg-red:#f44336;
+$card-font-red:#FFF;
+$card-bg-blue:#2196F3;
+$card-font-blue:#FFF;
+$card-bg-yellow:#FFEB3B;
+$card-font-yellow:#111;
+$card-bg-black:#37474F;
+$card-font-black:#EEE;
+@mixin Card($color-bg, $color-font) {
+    background-color: $color-bg;
+    border-color: darken($color-bg, 10%);
+    text-shadow: 3px 3px 0 darken($color-bg, 10%);
+    span {
+        color: $color-font;
+    }
+    &:hover {
+        border-color: darken($color-bg, 20%);
+        background-color: darken($color-bg, 15%);
+        text-shadow: 3px 3px 0 darken($color-bg, 20%);
+    }
+}
+
+.row.row-game {
+    margin: 1% 0 0;
+}
+
+.row-topbar {
+    border-bottom: solid 1px #EEE;
+}
+
+.row.row-game .one-fifth.columns:first-child {
+    margin-left: 0;
+}
+
+.row.row-game .one-fifth.columns {
+    width: 19.2%;
+    margin-left: 1%;
+}
+
+.cards-wrapper{
+    width: 1300px;
+    margin: 5px auto 0;
+}
+.card-container {
+    perspective: 800px;
+    width: 250px;
+    height: 150px;
+    position: relative;
+    float: left;
+    margin: 5px;
+    .card {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+        transform-origin: right center;
+        .front,
+        .back {
+            margin: 0;
+            display: block;
+            position: absolute;
+            width: 242px;
+            height: 142px;
+            backface-visibility: hidden;
+            border: 4px solid #CCC;
+            border-radius: 10px;
+            line-height: 142px;
+            text-align: center;
+            span {
+                font-size: 2.4em;
+                display: inline-block;
+                vertical-align: middle;
+                line-height: normal;
+                -webkit-touch-callout: none;
+                /* iOS Safari */
+                -webkit-user-select: none;
+                /* Chrome/Safari/Opera */
+                -khtml-user-select: none;
+                /* Konqueror */
+                -moz-user-select: none;
+                /* Firefox */
+                -ms-user-select: none;
+                /* Internet Explorer/Edge */
+                user-select: none;
+            }
+        }
+        .front {
+            z-index: 2;
+            /* for firefox 31 */
+            transform: rotateY(0deg);
+            @include Card($card-bg-default, $card-font-default);
+        }
+        .back {
+            transform: rotateY(180deg);
+        }
+        &.card-red {
+            .back {
+                @include Card($card-bg-red, $card-font-red);
+            }
+        }
+        &.card-blue {
+            .back {
+                @include Card($card-bg-blue, $card-font-blue);
+            }
+        }
+        &.card-black {
+            .back {
+                @include Card($card-bg-black, $card-font-black);
+            }
+        }
+        &.card-yellow {
+            .back {
+                @include Card($card-bg-yellow, $card-font-yellow);
+            }
+        }
+    }
+    &.flip {
+        .card {
+            transform: translateX( -100%) rotateY( -180deg);
+        }
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
