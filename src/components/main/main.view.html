@@ -1,25 +1,37 @@
-<div class="centerbox centerbox-sm">
-	<h1>CryptoCodes</h1>
-	<p>Το CrytoCodes είναι ένας κλόνος του γνωστού παιχνιδιού CodeNames. Ένα διασκεδαστικό παιχνίδι για πολλά άτομα. Δείτε τις
-		οδηγίες για το πώς παίζεται.</p>
-
-	<a ng-click="vm.NewGame()" class="button button-primary u-full-width">νεο παιχνιδι</a>
-
-	<a ng-if="vm.last_game.length" ui-sref="app.game({seed:vm.last_game})" class="button u-full-width">συνεχεια του <span class="serial">#{{vm.last_game}}</span></a>
-
-	<div class="row" ng-if="vm.show_search">
-		<div class="seven columns">
-			<input class="u-full-width" type="number" style="text-align:center" placeholder="κωδικός παιχνιδιού" ng-model="vm.seed">
+<div class="page">
+	<div class="page-header">
+		<span class="fa fa-user-secret icon"></span>
+		<div class="page-box">
+			<h1>CryptoCodes</h1>
+			<div>Το CrytoCodes είναι ένας κλώνος του γνωστού παιχνιδιού CodeNames. Ένα διασκεδαστικό παιχνίδι για πολλά άτομα. Δείτε τις
+				οδηγίες για το πώς παίζεται.</div>
 		</div>
-		<div class="five columns">
-			<button class="u-full-width" ng-click="vm.GoGame()">αναζητηση</a>
+	</div>
+	<div class="page-body">
+		<div class="page-box">
+
+			<a ng-click="vm.NewGame()" class="button button-primary u-full-width">νεο παιχνιδι</a>
+
+			<a ng-if="vm.last_game.length" ui-sref="app.game({seed:vm.last_game})" class="button u-full-width">
+				συνεχεια του <span class="serial">#{{vm.last_game}}</span>
+			</a>
+
+			<div class="row" ng-if="vm.show_search">
+				<div class="seven columns">
+					<input class="u-full-width" type="number" style="text-align:center" placeholder="κωδικός παιχνιδιού" ng-model="vm.seed">
+				</div>
+				<div class="five columns">
+					<button class="u-full-width" ng-click="vm.GoGame()">αναζητηση</button>
+				</div>
+			</div>
+
+			<a ng-click="vm.show_search=true" class="button u-full-width" ng-if="!vm.show_search">αναζητηση παιχνιδιου</a>
+			<a ui-sref="app.help" class="button u-full-width">οδηγιες</a>
+			<p class="footer">
+				CryptoCodes v0.2<br><a href="http://christosgeorgiou.gr">CG</a> -
+				<a href="https://github.com/ChristosGeorgiou/cryptocodes">Source Code</a>
+			</p>
 		</div>
 	</div>
 
-	<a ng-click="vm.show_search=true" class="button u-full-width" ng-if="!vm.show_search">αναζητηση παιχνιδιου</a>
-	<a ui-sref="app.help" class="button u-full-width">οδηγιες</a>
-	<p class="footer">
-		CryptoCodes v0.2<br><a href="http://christosgeorgiou.gr">CG</a> -
-		<a href="https://github.com/ChristosGeorgiou/cryptocodes">Source Code</a>
-	</p>
 </div>
