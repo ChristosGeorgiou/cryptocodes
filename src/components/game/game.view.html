@@ -1,23 +1,62 @@
-<div class="header">
-	<h1>CryptoCodes <small class="serial">GAME#{{vm.game._config.seed}}</small></h1>
+<div class="game-sidebar">
+	<div class="box">
+		<h1 class="header">CryptoCodes <small>v0.2</small></h1>
+		<hr>
+		<div class="info">GAME #{{vm.game._config.seed}}</div>
+		<a ui-sref="app.main" class="button u-full-width">
+			<span class="fa fa-angle-double-left fa-fw"></span> MENU
+		</a>
+		<button class="u-full-width" ng-click="vm.ToggleAll()">SpyMaster</button>
+		<hr>
+		<div class="rounds">
+			<div class="round blue">
+				<span class="number">01</span>
+				<span>ΜΠΛΕ</span>
+			</div>
+			<div class="round red">
+				<span class="number">01</span>
+				<span>KOKKINH</span>
+			</div>
+			<div class="round blue">
+				<span class="number">02</span>
+				<span>ΜΠΛΕ</span>
+			</div>
+			<div class="round red active">
+				<span class="number">02</span>
+				<span>KOKKINH</span>
+				<span class="timer">58</span>
+			</div>
+			<div class="controls">
+				<button class="stop"><span class="fa fa-stop fa-fw"></span></button>
+				<button class="pause"><span class="fa fa-pause fa-fw"></span></button>
+				<button class="start"><span class="fa fa-play fa-fw"></span></button>
+			</div>
+			<button class="next-round">ΕΠΟΜΕΝΟΣ <span class="fa fa-angle-right fa-fw"></span></button>
+		</div>
+		<hr>
+		<p class="footer">
+			CryptoCodes v0.2<br><a href="http://christosgeorgiou.gr">CG</a> -
+			<a href="https://github.com/ChristosGeorgiou/cryptocodes">Source Code</a>
+		</p>
+	</div>
 </div>
-<div class="toolbar">
-	<a ui-sref="app.main" class="button">πισω</a>
-	<button class="u-pull-right" ng-click="vm.ToggleAll()">εμφανιση / αποκρυψη ολων</button>
-</div>
-<div class="cards-wrapper">
+<div class="game-container">
+
 	<div ng-repeat="card in vm.game.cards track by $index" class="card-container" ng-class="{flip:card.flip}" ng-click="vm.ShowCard($index)">
 		<div class="card {{card.class}}">
 			<div class="front">
 				<span class="word">{{card.word}}</span>
+				<span class="fa fa-fw fa-5x fa-question-circle-o"></span>
 			</div>
 			<div class="back">
 				<span class="word">{{card.word}}</span>
 				<div class="expl">{{card.answer}}</div>
-				<span class="fa fa-{{card.icon}}"></span>
+				<span class="fa fa-fw fa-5x fa-{{card.icon}}"></span>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="u-cf"></div>
+
+	<div class="u-cf"></div>
+
+</div>

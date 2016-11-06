@@ -1,3 +1,4 @@
+@import "portrait";
 @import "centerbox";
 @import "game";
 body {
@@ -5,25 +6,15 @@ body {
     font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.wrapper {
-    padding: 10px;
-}
+.wrapper {}
 
-.header {
-    background: #EEE;
-    color: #666;
-    padding: 5px 10px;
-    h1 {
-        margin: 0;
-    }
-}
 
 .toolbar {
     background: #FAFAFA;
     padding: 5px 10px;
     border-bottom: solid 1px #EEE;
     a.button,
-    button{
+    button {
         margin: 0;
     }
 }

@@ -8,51 +8,105 @@ $card-bg-yellow:#FFC107;
 $card-font-yellow:#111;
 $card-bg-black:#37474F;
 $card-font-black:#EEE;
+$sidebar-size:150px;
 @mixin Card($color-bg, $color-font) {
     background-color: $color-bg;
     border-color: darken($color-bg, 10%);
     text-shadow: 3px 3px 0 darken($color-bg, 10%);
     color: $color-font;
-    .fa{
-        color:darken($color-bg, 10%);
+    .fa {
+        color: darken($color-bg, 10%);
         text-shadow: none;
     }
     &:hover {
         border-color: darken($color-bg, 20%);
         background-color: darken($color-bg, 15%);
         text-shadow: 3px 3px 0 darken($color-bg, 20%);
-        .fa{
-            color:darken($color-bg, 20%);
+        .fa {
+            color: darken($color-bg, 20%);
         }
     }
 }
 
-.row.row-game {
-    margin: 1% 0 0;
+.game-sidebar {
+    height: 100%;
+    background: #111;
+    position: absolute;
+    color: #FFF;
+    width: $sidebar-size;
+    top: 0;
+    hr {
+        border: solid 1px #333;
+        border-width: 1px 0 0;
+        margin: 2px 0;
+    }
+    .box {
+        margin: 5px;
+        .header {
+            font-size: 1.3em;
+            margin: 0 0 5px;
+        }
+        .info {
+            color: #AAA;
+        }
+        .rounds {
+            .round {
+                padding: 2px 5px;
+                border-radius: 5px;
+                margin: 0 0 2px;
+                .number {
+                    font-size: .8em;
+                }
+                .timer {
+                    float: right;
+                }
+                &.red {
+                    background: $card-bg-red;
+                }
+                &.blue {
+                    background: $card-bg-blue;
+                }
+            }
+            .controls {
+                margin: 0 -2px;
+                button {
+                    float: left;
+                    width: 30%;
+                    padding: 0;
+                    line-height: 1em;
+                    height: 30px;
+                    margin: 2px;
+                }
+            }
+            .next-round {
+                background: #4CAF50;
+                padding: 0;
+                line-height: 1em;
+                height: 40px;
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    }
+    a.button,
+    button {
+        color: #FFF;
+    }
 }
 
-.row-topbar {
-    border-bottom: solid 1px #EEE;
+.game-container {
+    background: #FAFAFA;
+    margin-left: $sidebar-size;
+    padding: 10px;
 }
 
-.row.row-game .one-fifth.columns:first-child {
-    margin-left: 0;
-}
-
-.row.row-game .one-fifth.columns {
-    width: 19.2%;
-    margin-left: 1%;
-}
-
-.cards-wrapper {
-    margin: 5px auto 0;
-}
-   
 .card-container {
     perspective: 800px;
     position: relative;
     float: left;
-    margin: 5px;
+    margin: 0.5%;
+    width: 19%;
+    height: 141px;
     .card {
         width: 100%;
         height: 100%;
@@ -60,6 +114,7 @@ $card-font-black:#EEE;
         transform-style: preserve-3d;
         transition: transform 1s;
         transform-origin: center;
+        user-select: none;
         .front,
         .back {
             margin: -3px;
@@ -74,6 +129,7 @@ $card-font-black:#EEE;
             text-align: center;
             overflow: hidden;
             white-space: nowrap;
+            user-select: none;
             &:before {
                 content: "";
                 display: inline-block;
@@ -83,6 +139,8 @@ $card-font-black:#EEE;
             .word {
                 display: inline-block;
                 vertical-align: middle;
+                font-size: 1.5em;
+                font-weight: 600;
                 line-height: normal;
                 -webkit-touch-callout: none;
                 /* iOS Safari */
@@ -98,9 +156,9 @@ $card-font-black:#EEE;
             }
             .fa {
                 position: absolute;
-                bottom: -15px;
-                left: -15px;
-                font-size: 6em;
+                bottom: -30px;
+                left: -35px;
+                font-size: 8em;
                 z-index: -1;
                 transform: rotate(20deg);
             }
@@ -113,7 +171,7 @@ $card-font-black:#EEE;
         }
         .back {
             transform: rotateX(180deg);
-            .expl{
+            .expl {
                 position: absolute;
                 font-size: 0.8em;
                 bottom: 5px;
@@ -148,63 +206,5 @@ $card-font-black:#EEE;
     }
     &:hover {
         cursor: pointer;
-    }
-}
-
-@media (min-width: 400px) {}
-
-
-/* Larger than phablet */
-
-@media (min-width: 550px) {}
-
-
-/* Larger than tablet */
-
-@media (min-width: 750px) {
-    .cards-wrapper {
-        width: 750px;
-        height: 586px;
-    }
-    .card-container {
-        width: 140px;
-        height: 107px;
-        .word {
-            font-size: 1.4em;
-        }
-    }
-}
-
-
-/* Larger than desktop */
-
-@media (min-width: 1000px) {
-    .cards-wrapper {
-        width: 1000px;
-        height: 768px;
-    }
-    .card-container {
-        width: 190px;
-        height: 143px;
-        .word {
-            font-size: 1.7em;
-        }
-    }
-}
-
-
-/* Larger than Desktop HD */
-
-@media (min-width: 1200px) {
-    .cards-wrapper {
-        width: 1200px;
-        height: 768px;
-    }
-    .card-container {
-        width: 230px;
-        height: 143px;
-        .word {
-            font-size: 2.3em;
-        }
     }
 }
