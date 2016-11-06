@@ -53,6 +53,12 @@
                 BLACK: "ΔΟΛΟΦΟΝΟΣ",
                 YELLOW: "ΑΘΩΟΣ",
             };
+            var _icons = {
+                BLUE: "user-circle",
+                RED: "user-circle-o",
+                BLACK: "user-secret",
+                YELLOW: "users",
+            };
 
             var _cards = [];
             for (var k = 0; k < amount; k++) {
@@ -60,6 +66,7 @@
                     word: words.pop(),
                     answer: _answers[type],
                     class: _cssclasses[type],
+                    icon: _icons[type],
                     type: type,
                 });
             }

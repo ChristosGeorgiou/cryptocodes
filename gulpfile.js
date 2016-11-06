@@ -11,7 +11,7 @@ var browserSync = require('browser-sync').create();
 var modRewrite = require('connect-modrewrite');
 
 
-gulp.task('default', ['build', 'browser-sync'], function () {
+gulp.task('default', ['build', 'browser-sync'], function() {
     gulp.watch("./scss/**/**.*", ['sass']);
     gulp.watch("./src/components/**/*.js", ['angular']);
     gulp.watch("./src/**/*.html", ['static']);
@@ -19,7 +19,7 @@ gulp.task('default', ['build', 'browser-sync'], function () {
 
 
 // Static server
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', function() {
     browserSync.init({
         ui: false,
         server: {
@@ -33,11 +33,11 @@ gulp.task('browser-sync', function () {
     });
 });
 
-gulp.task('build', ['angular', 'libs', 'static', 'sass'], function (cb) {
+gulp.task('build', ['angular', 'libs', 'static', 'sass'], function(cb) {
     cb();
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
 
     return gulp.src("./scss/**/**.scss", {
         read: true,
@@ -52,7 +52,7 @@ gulp.task('sass', function () {
 
 });
 
-gulp.task('angular', function () {
+gulp.task('angular', function() {
 
     return gulp.src("./src/components/**/*.js")
         .pipe(angularFilesort())
@@ -71,7 +71,7 @@ gulp.task('angular', function () {
 
 });
 
-gulp.task('static', function () {
+gulp.task('static', function() {
 
     gulp.src("./src/**/*.html")
         .pipe(gulp.dest("./dist/"));
@@ -80,11 +80,15 @@ gulp.task('static', function () {
 
 });
 
-gulp.task('libs', function () {
+gulp.task('libs', function() {
 
     gulp.src("./node_modules/angular/angular.min.js")
         .pipe(gulp.dest("./dist/static/scripts/angular"));
     gulp.src("./node_modules/angular-ui-router/release/angular-ui-router.min.js")
         .pipe(gulp.dest("./dist/static/scripts/angular-ui-router"));
+    gulp.src("./node_modules/font-awesome/css/font-awesome.min.css")
+        .pipe(gulp.dest("./dist/static/css"));
+    gulp.src("./node_modules/font-awesome/fonts/*")
+        .pipe(gulp.dest("./dist/static/fonts"));
 
 });

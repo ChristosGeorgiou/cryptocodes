@@ -9,11 +9,12 @@
 	<div ng-repeat="card in vm.game.cards track by $index" class="card-container" ng-class="{flip:card.flip}" ng-click="vm.ShowCard($index)">
 		<div class="card {{card.class}}">
 			<div class="front">
-				<span>{{card.word}}</span>
+				<span class="word">{{card.word}}</span>
 			</div>
 			<div class="back">
-				<span>{{card.word}}</span>
+				<span class="word">{{card.word}}</span>
 				<div class="expl">{{card.answer}}</div>
+				<span class="fa fa-{{card.icon}}"></span>
 			</div>
 		</div>
 	</div>
