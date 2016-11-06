@@ -7,37 +7,28 @@
 			<span class="fa fa-angle-double-left fa-fw"></span> MENU
 		</a>
 		<button class="u-full-width" ng-click="vm.ToggleAll()">SpyMaster</button>
-		<hr>
+		<!--<hr>
 		<div class="rounds">
-			<div class="round blue">
-				<span class="number">01</span>
-				<span>ΜΠΛΕ</span>
-			</div>
-			<div class="round red">
-				<span class="number">01</span>
-				<span>KOKKINH</span>
-			</div>
-			<div class="round blue">
-				<span class="number">02</span>
-				<span>ΜΠΛΕ</span>
-			</div>
-			<div class="round red active">
-				<span class="number">02</span>
-				<span>KOKKINH</span>
-				<span class="timer">58</span>
-			</div>
-			<div class="controls">
-				<button class="stop"><span class="fa fa-stop fa-fw"></span></button>
-				<button class="pause"><span class="fa fa-pause fa-fw"></span></button>
-				<button class="start"><span class="fa fa-play fa-fw"></span></button>
+			<div class="round {{round.team}}" ng-class="{active:$last}" ng-repeat="round in vm.game.rounds">
+				<span>{{round.team_label}}</span>
 			</div>
 			<button class="next-round">ΕΠΟΜΕΝΟΣ <span class="fa fa-angle-right fa-fw"></span></button>
-		</div>
+		</div>-->
 		<hr>
-		<p class="footer">
-			CryptoCodes v0.2<br><a href="http://christosgeorgiou.gr">CG</a> -
-			<a href="https://github.com/ChristosGeorgiou/cryptocodes">Source Code</a>
-		</p>
+		<div class="timer">
+			<div class="seconds">{{vm.timer}}</div>
+			<div class="controls">
+				<button class="stop" ng-click="vm.stop()"><span class="fa fa-stop fa-fw"></span></button>
+				<button class="pause" ng-click="vm.pause()"><span class="fa fa-pause fa-fw"></span></button>
+				<button class="start" ng-click="vm.start()"><span class="fa fa-play fa-fw"></span></button>
+			</div>
+			<div class="u-cf"></div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		CryptoCodes v0.2<br><a href="http://christosgeorgiou.gr">CG</a> -
+		<a href="https://github.com/ChristosGeorgiou/cryptocodes">Source Code</a>
 	</div>
 </div>
 <div class="game-container">

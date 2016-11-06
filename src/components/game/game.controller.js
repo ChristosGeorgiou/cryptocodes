@@ -6,7 +6,7 @@
     .controller("GameController", GameController);
 
   /* @ngInject */
-  function GameController($timeout, WordsData, $stateParams, RandomService, GameService) {
+  function GameController($timeout, WordsData, $stateParams, RandomService, GameService, $interval) {
 
     var vm = this;
 
@@ -18,6 +18,7 @@
       _config: {
         seed: _seed,
         amount: 25,
+        timer:3,
         cards: {
           blue: 9,
           red: 8,
@@ -26,7 +27,38 @@
         }
       },
       cards: [],
+      rounds: [{
+        team: "blue",
+        team_label: "ΜΠΛΕ",
+      }, {
+        team: "red",
+        team_label: "ΚΟΚΚΙΝΗ",
+      }],
     };
+
+    vm.timer = vm.game._config.timer;
+
+    vm.stop = function () {
+      vm.pause();
+      vm.timer = vm.game._config.timer;
+    }
+
+    vm.pause = function () {
+      if (vm._timer_interval) {
+        $interval.cancel(vm._timer_interval);
+        vm._timer_interval = null;
+      }
+    }
+
+    vm.start = function () {
+      vm._timer_interval = $interval(function () {
+        vm.timer--;
+        if (vm.timer <= 0) {
+          $interval.cancel(vm._timer_interval);
+          vm._timer_interval = null;
+        }
+      }, 1000);
+    }
 
     vm.game.cards = GameService.Init(vm.game._config);
 

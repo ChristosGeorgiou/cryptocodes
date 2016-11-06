@@ -38,34 +38,30 @@ $sidebar-size:150px;
     hr {
         border: solid 1px #333;
         border-width: 1px 0 0;
-        margin: 2px 0;
+        margin: 5px 0;
+    }
+    .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 20px 0;
     }
     .box {
-        margin: 5px;
+        margin: 8px;
         .header {
             font-size: 1.3em;
             margin: 0 0 5px;
         }
         .info {
             color: #AAA;
+            padding-bottom: 5px;
         }
-        .rounds {
-            .round {
-                padding: 2px 5px;
-                border-radius: 5px;
-                margin: 0 0 2px;
-                .number {
-                    font-size: .8em;
-                }
-                .timer {
-                    float: right;
-                }
-                &.red {
-                    background: $card-bg-red;
-                }
-                &.blue {
-                    background: $card-bg-blue;
-                }
+        .timer {
+            .seconds {
+                font-size: 5em;
+                font-family: monospace;
+                text-align: center;
             }
             .controls {
                 margin: 0 -2px;
@@ -76,6 +72,35 @@ $sidebar-size:150px;
                     line-height: 1em;
                     height: 30px;
                     margin: 2px;
+                }
+            }
+        }
+        .rounds {
+            .round {
+                padding: 7px 10px 5px;
+                margin: 0 0 2px;
+                font-weight: 300;
+                font-size: 1em;
+                line-height: 1em;
+                border-radius: 0 12px 12px 10px;
+                border-bottom: solid 2px;
+                &.active {
+                    font-weight: 600;
+                    border-bottom-color: #FFF !important;
+                }
+                .number {
+                    font-size: .8em;
+                }
+                .timer {
+                    float: right;
+                }
+                &.red {
+                    background: $card-bg-red;
+                    border-bottom-color: darken($card-bg-red, 10%);
+                }
+                &.blue {
+                    background: $card-bg-blue;
+                    border-bottom-color: darken($card-bg-blue, 10%);
                 }
             }
             .next-round {
