@@ -17,8 +17,7 @@
     vm.game = {
       _config: {
         seed: _seed,
-        amount: 25,
-        timer:3,
+        timer:90,
         cards: {
           blue: 9,
           red: 8,
