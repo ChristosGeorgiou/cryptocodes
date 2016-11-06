@@ -40,7 +40,7 @@ $card-font-black:#EEE;
 .cards-wrapper {
     margin: 5px auto 0;
 }
-
+   
 .card-container {
     perspective: 800px;
     position: relative;
@@ -52,7 +52,7 @@ $card-font-black:#EEE;
         position: absolute;
         transform-style: preserve-3d;
         transition: transform 1s;
-        transform-origin: right center;
+        transform-origin: center;
         .front,
         .back {
             margin: -3px;
@@ -97,7 +97,7 @@ $card-font-black:#EEE;
             @include Card($card-bg-default, $card-font-default);
         }
         .back {
-            transform: rotateY(180deg);
+            transform: rotateX(180deg);
             .expl{
                 position: absolute;
                 font-size: 0.8em;
@@ -128,7 +128,7 @@ $card-font-black:#EEE;
     }
     &.flip {
         .card {
-            transform: translateX( -100%) rotateY( -180deg);
+            transform: rotateX( -180deg);
         }
     }
     &:hover {
