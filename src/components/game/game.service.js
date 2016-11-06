@@ -26,9 +26,9 @@
 
         function BuildCards() {
 
-            RandomService.seed =1;// angular.copy(service._game._config.seed);
-
-            var _words = _shuffle(WordsData).splice(0, service._game._config.amount);
+            RandomService.seed = angular.copy(service._game._config.seed);
+            
+            var _words = angular.copy(WordsData).splice(0, service._game._config.amount);
 
             var _cards = [];
             _cards = _cards.concat(GenerateCards(_words, service._game._config.cards.red, "RED"));

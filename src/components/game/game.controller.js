@@ -10,11 +10,13 @@
 
     var vm = this;
 
-    localStorage.setItem("game",$stateParams.seed);
+    var _seed = parseInt($stateParams.seed);
+
+    localStorage.setItem("game", _seed);
 
     vm.game = {
       _config: {
-        seed: $stateParams.seed,
+        seed: _seed,
         amount: 25,
         cards: {
           blue: 9,
@@ -32,7 +34,7 @@
       vm.game.cards[index].flip = !vm.game.cards[index].flip;
     };
 
-    vm._t=false;
+    vm._t = false;
     vm.ToggleAll = function () {
       vm.game.cards.forEach(function (c) {
         c.flip = !vm._t;

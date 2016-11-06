@@ -16,6 +16,7 @@
         return service;
 
         function Get() {
+            console.log("service.seed",service.seed);
             var x = Math.sin(service.seed++);
             return x - Math.floor(x);
         }
