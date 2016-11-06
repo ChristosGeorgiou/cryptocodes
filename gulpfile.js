@@ -11,9 +11,10 @@ var browserSync = require('browser-sync').create();
 var modRewrite = require('connect-modrewrite');
 
 
-gulp.task('default', ['sass', 'scripts', 'browser-sync'], function () {
+gulp.task('default', ['build', 'browser-sync'], function () {
     gulp.watch("./scss/**/**.*", ['sass']);
-    gulp.watch("./src/**/*.js", ['scripts']);
+    gulp.watch("./src/components/**/*.js", ['angular']);
+    gulp.watch("./src/**/*.html", ['static']);
 });
 
 
@@ -22,7 +23,7 @@ gulp.task('browser-sync', function () {
     browserSync.init({
         ui: false,
         server: {
-            baseDir: "./",
+            baseDir: "./dist/",
             middleware: [
                 modRewrite([
                     '!\\.\\w+$ /index.html [L]'
@@ -30,6 +31,10 @@ gulp.task('browser-sync', function () {
             ]
         }
     });
+});
+
+gulp.task('build', ['angular', 'libs', 'static', 'sass'], function (cb) {
+    cb();
 });
 
 gulp.task('sass', function () {
@@ -43,13 +48,13 @@ gulp.task('sass', function () {
             suffix: ".min",
             extname: ".css"
         }))
-        .pipe(gulp.dest("./assets/css"));
+        .pipe(gulp.dest("./dist/static/css"));
 
 });
 
-gulp.task('scripts', ['libs'], function () {
+gulp.task('angular', function () {
 
-    return gulp.src("./src/**/*.js")
+    return gulp.src("./src/components/**/*.js")
         .pipe(angularFilesort())
         .pipe(sourcemaps.init())
         .pipe(concat("app.min.js", {
@@ -62,15 +67,24 @@ gulp.task('scripts', ['libs'], function () {
             mangle: false
         }))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest("./assets/scripts"));
+        .pipe(gulp.dest("./dist/static/scripts"));
+
+});
+
+gulp.task('static', function () {
+
+    gulp.src("./src/**/*.html")
+        .pipe(gulp.dest("./dist/"));
+    gulp.src("./src/static/**/*.*")
+        .pipe(gulp.dest("./dist/static"));
 
 });
 
 gulp.task('libs', function () {
 
     gulp.src("./node_modules/angular/angular.min.js")
-        .pipe(gulp.dest("./assets/scripts/angular"));
+        .pipe(gulp.dest("./dist/static/scripts/angular"));
     gulp.src("./node_modules/angular-ui-router/release/angular-ui-router.min.js")
-        .pipe(gulp.dest("./assets/scripts/angular-ui-router"));
+        .pipe(gulp.dest("./dist/static/scripts/angular-ui-router"));
 
 });
