@@ -33,9 +33,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('build', ['angular', 'libs', 'static', 'sass'], function(cb) {
-    cb();
-});
+gulp.task('build', ['angular', 'libs', 'static', 'sass']);
 
 gulp.task('sass', function() {
 
