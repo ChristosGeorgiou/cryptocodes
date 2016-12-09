@@ -2,11 +2,15 @@
   "name": "cryptocodes",
   "version": "0.2.1",
   "description": "",
+  "repository": "https://github.com/ChristosGeorgiou/cryptocodes.git",
   "scripts": {},
   "author": {
     "name": "Christos Georgiou",
     "email": "georgiou.christos@outlook.com",
     "url": "http://christosgeorgiou.gr"
+  },
+  "engines": {
+    "node": ">=6"
   },
   "license": "MIT",
   "dependencies": {},
