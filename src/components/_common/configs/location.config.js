@@ -1,13 +1,10 @@
 (function () {
-    'use strict';
-
-    angular
+  angular
         .module('app')
         .config(LocationConfig);
 
     /* @ngInject */
-    function LocationConfig($locationProvider) {
-        $locationProvider.html5Mode(true);
-    }
-
-})();
+  function LocationConfig($locationProvider) {
+    $locationProvider.html5Mode(true);
+  }
+}());

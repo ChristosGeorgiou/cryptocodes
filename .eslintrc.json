@@ -1,0 +1,13 @@
+{
+    "extends": ["airbnb-base", "angular"],
+    "plugins": ["import"],
+    "globals": {
+        "angular": true,
+        "_": true,
+        "localStorage": true
+    },
+    "rules": {
+        "func-names": 0,
+        "no-param-reassign":0
+    }
+}

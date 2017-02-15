@@ -1,25 +1,21 @@
 (function () {
-    'use strict';
+  angular
+    .module('app')
+    .factory('RandomService', RandomService);
 
-    angular
-        .module('app')
-        .factory('RandomService', RandomService);
+  /* @ngInject */
+  function RandomService($log) {
+    const service = {
+      seed: Math.floor(Math.random() * 10 * 8),
+      Get,
+    };
 
-    /* @ngInject */
-    function RandomService() {
+    return service;
 
-        var service = {
-            seed: Math.floor(Math.random() * 10 * 8),
-            Get: Get,
-        };
-
-        return service;
-
-        function Get() {
-            console.log("service.seed",service.seed);
-            var x = Math.sin(service.seed++);
-            return x - Math.floor(x);
-        }
+    function Get() {
+      $log.debug('service.seed', service.seed);
+      const x = Math.sin(service.seed += 1);
+      return x - Math.floor(x);
     }
-
-} ());
+  }
+}());
