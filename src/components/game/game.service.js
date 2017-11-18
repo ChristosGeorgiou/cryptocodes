@@ -27,7 +27,7 @@
         function BuildCards() {
 
             RandomService.seed = angular.copy(service._game._config.seed);
-            
+
             var _words = _shuffle(angular.copy(WordsData));
 
             var _cards = [];
@@ -48,8 +48,8 @@
                 YELLOW: "card-yellow",
             };
             var _answers = {
-                BLUE: "ΜΠΛΕ ΟΜΑΔΑ",
-                RED: "ΚΟΚΚΙΝΗ ΟΜΑΔΑ",
+                BLUE: "ΜΠΛΕ",
+                RED: "ΚΟΚΚΙΝΗ",
                 BLACK: "ΔΟΛΟΦΟΝΟΣ",
                 YELLOW: "ΑΘΩΟΣ",
             };
@@ -85,4 +85,4 @@
         }
     }
 
-} ());
+}());
